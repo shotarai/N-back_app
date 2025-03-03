@@ -132,7 +132,7 @@ const PlayScreen: React.FC<PlayScreenProps> = ({ currentTime }) => {
     const currentUserEmail = auth.currentUser?.email
       ? auth.currentUser.email
       : "";
-    const dataRef = doc(db, "2024", currentUserEmail);
+    const dataRef = doc(db, "2025", currentUserEmail);
     const maxRetries = 3;
     let attempts = 0;
     let success = false;
@@ -145,7 +145,6 @@ const PlayScreen: React.FC<PlayScreenProps> = ({ currentTime }) => {
         attempts += 1;
         if (attempts >= maxRetries) {
           console.error("Failed to save answer after multiple attempts:", error);
-          // ユーザーにエラーメッセージを表示するなどの追加処理を実装
         } else {
           console.log(`Retrying to save answer... (Attempt ${attempts})`);
         }
@@ -204,7 +203,7 @@ const PlayScreen: React.FC<PlayScreenProps> = ({ currentTime }) => {
         )
       ) : (
         <View style={styles.container}>
-          {isLoading ? ( // Conditionally render the loading indicator
+          {isLoading ? (
             <ActivityIndicator size="large" color="#0000ff" />
           ) : (
             <>
